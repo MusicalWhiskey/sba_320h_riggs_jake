@@ -11,8 +11,12 @@ body {
     font-family: 'Pokemon Solid', sans-serif;
     font-size: 100px;
     color: yellow;
-    
-    
+}
+
+.subtitle {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 50px;
+    color: yellow;
 }
 
 .botton_next {
@@ -33,4 +37,11 @@ body {
     font-size: 40px;
     padding-inline: 50px;
     margin-right: 10px;
+}
+
+
+.version {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 50px;
+    color: red;
 }

@@ -43,7 +43,8 @@ export default function App() {
   
   return (
     <>
-<div className='title'>Pokemon Dex!!!!</div>
+<div className='title'>Pokemon Dex!!!</div>
+<div className='subtitle'>Click Through List of Pokemon <span className='version'>(v.2.0.1.4.2)</span></div>
 
       <PokemonDex pokemon={pokemon} />
       <DexFormation
