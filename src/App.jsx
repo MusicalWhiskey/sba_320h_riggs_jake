@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PokemonDex from './components/PokemonDex.jsx'
 import axios from 'axios'
 import DexFormation from './components/DexFormation.jsx';
+import './App.css'
 
 
 export default function App() {
@@ -10,7 +11,9 @@ export default function App() {
   const [nextPageUrl, setNextPageUrl] = useState()
   const [prevPageUrl, setPrevPageUrl] = useState()
   const [loading, setLoading] = useState(true)
+  
 
+  
   useEffect(() => {
     setLoading(true)
     let cancel
@@ -21,10 +24,13 @@ export default function App() {
       setNextPageUrl(res.data.next)
       setPrevPageUrl(res.data.previous)
       setPokemon(res.data.results.map(p => p.name))
+
     })
 
     return () => cancel()
   }, [currentPageUrl])
+
+  
 
   function gotoNextPage() {
     setCurrentPageUrl(nextPageUrl)
@@ -34,10 +40,12 @@ export default function App() {
     setCurrentPageUrl(prevPageUrl)
   }
 
-  if (loading) return "Loading..."
+  if (loading) return <div>Poke-Loading...Please wait!</div>
   
   return (
     <>
+<div><h1>Pokemon Dex!!!!</h1></div>
+
       <PokemonDex pokemon={pokemon} />
       <DexFormation
         gotoNextPage={nextPageUrl ? gotoNextPage : null}
