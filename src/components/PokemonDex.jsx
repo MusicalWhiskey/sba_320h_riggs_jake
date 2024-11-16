@@ -1,6 +1,5 @@
 import React from 'react'
-
-export default function PokemonDex({ pokemon }) {
+export default function PokemonDex({ id, pokemon }) {
   return (
     <div>
       {pokemon.map((p => (
