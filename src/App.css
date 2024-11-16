@@ -3,10 +3,24 @@ body {
     color: white;
     text-align: center;
     font-size: 30px;
-    text-decoration: capitalize;
 
 }
 h1 {
     color: red;
     font-size: 3rem;
+    text-decoration: underline
+}
+
+.botton_next {
+    background-color: blue;
+    color: white;
+    font-size: 40px;
+    padding-inline: 40px;
+}
+
+.botton_prev {
+    background-color: red;
+    color: white;
+    font-size: 40px;
+    padding-inline: 40px;
 }
