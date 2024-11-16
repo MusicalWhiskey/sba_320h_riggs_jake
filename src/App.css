@@ -15,16 +15,20 @@ body {
 }
 
 .botton_next {
+    font-family: 'Pokemon Solid', sans-serif;
     background-color: blue;
-    color: white;
+    color: yellow;
     font-size: 40px;
     padding-inline: 50px;
     margin-left: auto
+    
+    
 }
 
 .botton_prev {
+    font-family: 'Pokemon Solid', sans-serif;
     background-color: red;
-    color: white;
+    color: yellow;
     font-size: 40px;
     padding-inline: 50px;
     margin-right: 10px;
