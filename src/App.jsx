@@ -14,15 +14,20 @@ export default function App() {
 
   useEffect(() => {
     axios.get(currentPageUrl).then(res => {
+      cancelToken: new axios.CancelToken(c => cancel = c) 
+    }).then(res => {
       setNextPageUrl(res.data.next);
       setPreviousPageUrl(res.data.previous);
       setPokemon(res.data.results.map(p => p.name));
       setLoading(false); 
-    });
+    })
+
+  return () =>  cancel();
   }, [currentPageUrl]);
 
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Poke-Loading...Please wait</div>;
   }
 
   return (
