@@ -1,36 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import PokemonDex from './components/PokemonDex.jsx';
+import PokemonDex from './components/PokemonDex.jsx'
+import axios from 'axios'
 import DexFormation from './components/DexFormation.jsx';
-import axios from 'axios';
-import './App.css';
+
 
 export default function App() {
-  const [pokemon, setPokemon] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon");
-  const [nextPageUrl, setNextPageUrl] = useState("");
-  const [previousPageUrl, setPreviousPageUrl] = useState("");
-  
+  const [pokemon, setPokemon] = useState([])
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
+  const [nextPageUrl, setNextPageUrl] = useState()
+  const [prevPageUrl, setPrevPageUrl] = useState()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    axios.get(currentPageUrl).then(res => {
-      cancelToken: new axios.CancelToken(c => cancel = c) 
+    setLoading(true)
+    let cancel
+    axios.get(currentPageUrl, {
+      cancelToken: new axios.CancelToken(c => cancel = c)
     }).then(res => {
-      setNextPageUrl(res.data.next);
-      setPreviousPageUrl(res.data.previous);
-      setPokemon(res.data.results.map(p => p.name));
-      setLoading(false); 
+      setLoading(false)
+      setNextPageUrl(res.data.next)
+      setPrevPageUrl(res.data.previous)
+      setPokemon(res.data.results.map(p => p.name))
     })
 
-  return () =>  cancel();
-  }, [currentPageUrl]);
+    return () => cancel()
+  }, [currentPageUrl])
 
-
-  if (loading) {
-    return <div>Poke-Loading...Please wait</div>;
+  function gotoNextPage() {
+    setCurrentPageUrl(nextPageUrl)
   }
 
+  function gotoPrevPage() {
+    setCurrentPageUrl(prevPageUrl)
+  }
+
+  if (loading) return "Loading..."
+  
   return (
-    <PokemonDex pokemon={pokemon} />
+    <>
+      <PokemonDex pokemon={pokemon} />
+      <DexFormation
+        gotoNextPage={nextPageUrl ? gotoNextPage : null}
+        gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+      />
+    </>
   );
 }
