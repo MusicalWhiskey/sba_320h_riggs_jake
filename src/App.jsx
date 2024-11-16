@@ -1,14 +1,13 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
+import PokemonDex from './components/PokemonDex.jsx'
+import DexFormation from './components/DexFormation.jsx'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pokemon, setPokemon] = useState(["Squirtle", "Charmander", "Bulbasaur"])
 
   return (
-    <>
-    <h1>SBA 320H</h1>
-      
-    </>
+    <PokemonDex pokemon = {pokemon}  />
   )
 }
 
