@@ -4,6 +4,7 @@ import axios from 'axios'
 import DexFormation from './components/DexFormation.jsx';
 import './App.css'
 
+function capitalizeFirstLetter(text) { if (typeof text !== "string") { return ""; } return text.charAt(0).toUpperCase() + text.slice(1); }
 
 export default function App() {
   const [pokemon, setPokemon] = useState([])
@@ -23,8 +24,7 @@ export default function App() {
       setLoading(false)
       setNextPageUrl(res.data.next)
       setPrevPageUrl(res.data.previous)
-      setPokemon(res.data.results.map(p => p.name))
-
+      setPokemon(res.data.results.map(p => capitalizeFirstLetter(p.name)))
     })
 
     return () => cancel()
