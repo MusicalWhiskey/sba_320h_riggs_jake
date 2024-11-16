@@ -5,22 +5,27 @@ body {
     font-size: 30px;
 
 }
-h1 {
-    color: red;
-    font-size: 3rem;
-    text-decoration: underline
+
+.title {
+    font-family: 'Pokemon Solid', sans-serif;
+    font-size: 100px;
+    color: yellow;
+    
+    
 }
 
 .botton_next {
     background-color: blue;
     color: white;
     font-size: 40px;
-    padding-inline: 40px;
+    padding-inline: 50px;
+    margin-left: auto
 }
 
 .botton_prev {
     background-color: red;
     color: white;
     font-size: 40px;
-    padding-inline: 40px;
+    padding-inline: 50px;
+    margin-right: 10px;
 }

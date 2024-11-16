@@ -43,7 +43,7 @@ export default function App() {
   
   return (
     <>
-<div><h1>Pokemon Dex!!!!</h1></div>
+<div className='title'>Pokemon Dex!!!!</div>
 
       <PokemonDex pokemon={pokemon} />
       <DexFormation
