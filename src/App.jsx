@@ -3,7 +3,7 @@ import PokemonDex from './components/PokemonDex.jsx'
 import axios from 'axios'
 import DexFormation from './components/DexFormation.jsx';
 import './App.css'
-import { capitalizeFirstLetter } from './functions/CapitalizeFirstLetter.jsx';
+import { capitalizeFirstLetter } from './components/CapitalizeFirstLetter.jsx';
 
 export default function App() {
   const [pokemon, setPokemon] = useState([])
