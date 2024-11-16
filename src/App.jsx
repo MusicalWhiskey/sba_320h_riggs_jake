@@ -1,21 +1,31 @@
-import React, { useState } from 'react'
-import PokemonDex from './components/PokemonDex.jsx'
-import DexFormation from './components/DexFormation.jsx'
-import axios from 'axios'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import PokemonDex from './components/PokemonDex.jsx';
+import DexFormation from './components/DexFormation.jsx';
+import axios from 'axios';
+import './App.css';
 
-function App() {
-  const [pokemon, setPokemon] = useState(["Squirtle", "Charmander", "Bulbasaur"])
+export default function App() {
+  const [pokemon, setPokemon] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon");
+  const [nextPageUrl, setNextPageUrl] = useState("");
+  const [previousPageUrl, setPreviousPageUrl] = useState("");
+  
 
-  axios.get("https://pokeapi.co/api/v2/pokemon").then((res) => {
-    console.log(res.data.results)
-    setPokemon(res.data.results)
-  })
+  useEffect(() => {
+    axios.get(currentPageUrl).then(res => {
+      setNextPageUrl(res.data.next);
+      setPreviousPageUrl(res.data.previous);
+      setPokemon(res.data.results.map(p => p.name));
+      setLoading(false); 
+    });
+  }, [currentPageUrl]);
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <PokemonDex pokemon = {pokemon}  />
-  )
+    <PokemonDex pokemon={pokemon} />
+  );
 }
-
-export default App
