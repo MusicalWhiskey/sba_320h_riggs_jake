@@ -7,7 +7,7 @@ import capitalizeFirstLetter from './components/CapitalizeFirstLetter.jsx';
 
 export default function App() {
   const [pokemon, setPokemon] = useState([])
-  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon")
+  const [currentPageUrl, setCurrentPageUrl] = useState("https://pokeapi.co/api/v2/pokemon/?limit=12&offset=0")
   const [nextPageUrl, setNextPageUrl] = useState()
   const [prevPageUrl, setPrevPageUrl] = useState()
   const [loading, setLoading] = useState(true)
@@ -39,12 +39,12 @@ export default function App() {
     setCurrentPageUrl(prevPageUrl)
   }
 
-  if (loading) return <div className='loading'>Poke-Loading...Please wait!</div>
+  if (loading) return <div className='loading'><span id='loading_1'>Poke-Loading...</span> <br /><span id='loading_2'>...Please wait!</span></div>
   
   return (
     <>
 <div className='title'>Pokemon Dex!!!</div>
-<div className='subtitle'>Click Through List of Pokemon <span className='version'>(v.2.0.1.4.2)</span></div>
+<div className='subtitle'>Click Through List of Pokemon <br /><span className='version'>(v.2.0.1.4.2)</span></div>
 
       <PokemonDex pokemon={pokemon} />
       <DexFormation
