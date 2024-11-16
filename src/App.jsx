@@ -3,7 +3,7 @@ import PokemonDex from './components/PokemonDex.jsx'
 import axios from 'axios'
 import DexFormation from './components/DexFormation.jsx';
 import './App.css'
-import { capitalizeFirstLetter } from './components/CapitalizeFirstLetter.jsx';
+import capitalizeFirstLetter from './components/CapitalizeFirstLetter.jsx';
 
 export default function App() {
   const [pokemon, setPokemon] = useState([])
@@ -39,7 +39,7 @@ export default function App() {
     setCurrentPageUrl(prevPageUrl)
   }
 
-  if (loading) return <div>Poke-Loading...Please wait!</div>
+  if (loading) return <div className='loading'>Poke-Loading...Please wait!</div>
   
   return (
     <>
